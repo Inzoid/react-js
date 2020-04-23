@@ -1,38 +1,43 @@
-.App {
-  text-align: center;
+.ParentBox {
+  width: 80%;
+  overflow: hidden;
+  margin: auto;
+  margin-top: 100px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.Image {
+  float: left;
+  width: 50%;
+  height: 400px;
+  background: #e8e8e8;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.Image img {
+  width: 100%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.Deskripsi {
+  width: 40%;
+  overflow: hidden;
+  float: left;  
+  margin-left: 30px;
 }
 
-.App-link {
-  color: #61dafb;
+.Deskripsi .Cate {
+  color: #aeb1b8;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.Deskripsi .Title {
+  margin: 0;
 }
+
+.Deskripsi .Price {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.Deskripsi .Info {
+  line-height: 1.8;
+  color: dimgray;
+}
+
