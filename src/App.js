@@ -8,25 +8,43 @@ import './App.css';
         <Header />
         <div className="ParentBox">
           <Image />
-          <ProdukInfo category="Sneakers" name="Black Swagg" />
+          <ProdukInfo category="Sneakers" name="Black Swagg" isDiscount="yes" />
         </div>
         <div className="ParentBox">
           <Image />
-          <ProdukInfo category="Sport" name="White Sneakers" />
+          <ProdukInfo category="Sport" name="White Sneakers" isDiscount="coming" />
         </div>
       </div>
     );
   }
 
-  function Image(props) {
-    const {photo} = props ;
+  function Image() {
     
     return (
       <div className="Image">
         <img src="sample.jpg" />
-        {photo}
       </div>
     );
+  }
+
+  function CheckDiscount(props) {
+    const { isDiscount } = props;
+
+    if(isDiscount == "yes"){
+      return(
+        <p>Discount 50 % off</p>
+      );
+    }
+    else if(isDiscount == "coming"){
+      return(
+        <p>Discount Coming Soon</p>
+      );
+    }
+    else {
+      return(
+        <p>Not Discount</p>
+      );
+    }
   }
 
   function ProdukInfo(props) {
@@ -38,6 +56,7 @@ import './App.css';
           <p className="Cate">{category}</p>
           <h1 className="Title">{name}</h1>
           <p className="Price">IDR 7.399.999</p>
+          <CheckDiscount isDiscount={isDiscount} />
           <p className="Info">One of the most best shoes in the AJ 
           Collection, Black sneakers have earned their own aesthetic ranking in the modern male wardrobe. As a staple footwear piece they can be paired with various popular looks ranging from classic denim to luxe streetwear to leather jackets.</p>
           <div className="counter">
