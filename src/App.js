@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import ReviewItems from './Reviews';
+import PropTypes from 'prop-types';
 
   function App() {
     return (
@@ -28,11 +29,11 @@ import ReviewItems from './Reviews';
   }
 
   function CheckDiscount(props) {
-    const { isDiscount } = props;
+    const { isDiscount, discount } = props;
 
     if(isDiscount == "yes"){
       return(
-        <p>Discount 50 % off</p>
+        <p>Discount {discount}% off</p>
       );
     }
     else if(isDiscount == "coming"){
@@ -51,7 +52,7 @@ import ReviewItems from './Reviews';
     const {category, name, isDiscount} = props ;
     const benefit = ["New Space", "Best Quality", "Exclusive"];
     const listBenefit = benefit.map((itemBenefit) =>
-      <li> { itemBenefit } </li>
+      <li key={itemBenefit}> { itemBenefit } </li>
     );
 
     return (
@@ -60,7 +61,7 @@ import ReviewItems from './Reviews';
           <p className="Cate">{category}</p>
             <h1 className="Title">{name}</h1>
               <p className="Price">IDR 7.399.999</p>
-                <CheckDiscount isDiscount={isDiscount} />
+                <CheckDiscount isDiscount={isDiscount} discount={40} />
                   <p className="Info">One of the most best shoes in the AJ 
                   Collection, Black sneakers have earned their own aesthetic ranking in the modern male wardrobe. As a staple footwear piece they can be paired with various popular looks ranging from classic denim to luxe streetwear to leather jackets.</p>
                   <ul>
@@ -80,6 +81,10 @@ import ReviewItems from './Reviews';
   function AddCart(e) {
     return console.log(('Add Item ' + e + ' Success'));
   }
+  
+  CheckDiscount.propTypes = {
+    discount: PropTypes.number
+  };
 
   function Header() {
     return(
