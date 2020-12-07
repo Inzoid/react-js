@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import Comment from './Comment';
 
 function Review() {
-  const users = [
+  const [users, setUsers] = useState([
     {
       "id": 1,
       "img" : "https://pbs.twimg.com/profile_images/1333887836987084800/50QShEev_400x400.jpg",
@@ -28,13 +28,20 @@ function Review() {
       "name": "Flacko",
       "review": "Nice Component, Thanks seller"
     },
-  ];
+  ]);
+
+  const deleteCommentHandler = (id) => {
+    const listComment = [...users]
+    listComment.splice(id, 1) 
+    setUsers(listComment);
+  }
+
   const listReview = users.map((itemReview) =>
     <div key={itemReview.id} className="Item">
       <img src={itemReview.img} />
         <div className="User">
           <h3>{ itemReview.name }</h3>
-          <p>{ itemReview.review } </p>
+          <p>{ itemReview.review }  <button onClick={deleteCommentHandler} className="delete">X</button> </p>
         </div>
       <hr />
     </div>
