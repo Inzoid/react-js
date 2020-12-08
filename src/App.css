@@ -175,3 +175,14 @@
     border: solid 1px teal;
     background-color: #fefefe;
   }
+
+  .delete {
+    color: white;
+    float: right;
+    height: 25px;
+    width: 35px;
+    background: red;
+    border-radius: 55px;
+    border: none;
+    margin: 2px 6px;
+  }

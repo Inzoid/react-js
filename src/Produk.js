@@ -11,6 +11,14 @@ function ProdukInfo(props) {
       <li key={itemBenefit}> { itemBenefit } </li>
     );
 
+    const Image = () => {
+      return (
+        <div className="Image">
+          <img src="sample.jpg" />
+        </div>
+      );
+    }
+
     const changeDiscount = () => {
       setIsDiscount('yes')
       return alert('Press OK to see Discount')
@@ -39,6 +47,7 @@ function ProdukInfo(props) {
 
     return (
       <div>
+        <Image />
         <div className="Deskripsi">
           <b className="Cate">{props.category}</b>
           <button onClick={props.onChangeName} className="btn-name">Change Name</button>

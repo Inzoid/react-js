@@ -46,20 +46,11 @@ import Cart from './Cart';
         </div>
       )
     }
-
-    const Image = () => {
-      return (
-        <div className="Image">
-          <img src="sample.jpg" />
-        </div>
-      );
-    }
     
     return (
       <div>
         <Header />
           <div className="ParentBox">
-            <Image />
             <ProdukInfo category="Compass" name={name} isDiscount="coming" onChangeName={chageNameHandler} > 
               <Cart handleAddCart={handleAddCart} handlePlus={handlePlus} handleMinus={handleMinus} value={value} />
             </ProdukInfo>
