@@ -52,7 +52,6 @@ function Review() {
       <h2>Reviews</h2>
       {listReview}
       <Comment />
-      <hr/>
     </div>
   );
 }

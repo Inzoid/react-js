@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
+import Menu from './Menu';
 
 function Comment() {
   const [showComment, setShowComment] = useState(false);
@@ -21,10 +22,12 @@ function Comment() {
         <hr />
       </div>
       }
-      <button className="btn" style={{background: '#3F51B5'}} onClick={() => setShowComment(true)}>Show Comment Box</button>
-      {showComment && !comment &&
-        <button className="btn" style={{background: 'grey' , pointer: 'cursor'}} onClick={() => setShowComment(false)}>Hide Comment Box</button>
-      }
+      <Menu>
+        <button className="btn" style={{background: '#3F51B5'}} onClick={() => setShowComment(true)}>Show Comment Box</button>
+        {showComment && !comment &&
+          <button className="btn" style={{background: 'grey' , pointer: 'cursor'}} onClick={() => setShowComment(false)}>Hide Comment Box</button>
+        }
+      </Menu>
       {showComment && !comment &&
         <div className="User">
         <img style={{marginTop: '16px'}} src="https://pbs.twimg.com/profile_images/1333422513318100994/lrNmElhn_400x400.jpg" />
