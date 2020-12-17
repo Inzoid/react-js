@@ -1,12 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useReducer } from "react";
 import "./App.css";
 import ReviewItems from "./component/Reviews";
 import ProdukInfo from "./component/Produk";
 import Cart from "./component/Cart";
 
+function reducer(state, action) {
+  switch (action.type) {
+    case 'increment':
+      return {count: state.count + 1}
+    case 'decrament':
+      return {count: state.count - 1}
+    default:
+      return state
+  }
+}
+
 function App() {
   const [name, setName] = useState("Dior Limited");
-  const [value, setValue] = useState(0);
+  const [state, dispatch] = useReducer(reducer, {count: 0})
   const [cart, setCart] = useState(0);
 
   const chageNameHandler = () => {
@@ -23,11 +34,11 @@ function App() {
   };
 
   const handlePlus = () => {
-    setValue(value + 1);
+   dispatch({type: 'increment'})
   };
 
   const handleMinus = () => {
-    setValue(value - 1);
+    dispatch({type: 'decrament'})
   };
 
   const Header = () => {
@@ -59,7 +70,7 @@ function App() {
               handleAddCart={handleAddCart}
               handlePlus={handlePlus}
               handleMinus={handleMinus}
-              value={value}
+              value={state.count}
             />
           </ProdukInfo>
           <ReviewItems />
