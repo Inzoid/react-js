@@ -27,7 +27,7 @@ function newComment(name, comment) {
 
 function Comment() {
   const [name, setName] = useState('Your Name');
-  const [showComment, setShowComment] = useState(false);
+  const [showComment, setShowComment] = useState(true);
   const [newComment, dispatch] = useReducer(reducer, []);
   const [comment, setComment] = useState('');
 
@@ -35,9 +35,9 @@ function Comment() {
     e.preventDefault();
     dispatch({
       type: ACTION.ADD_COMMENT,
-      payload: { 
-        name: name, 
-        comment: comment 
+      payload: {
+        name: name,
+        comment: comment,
       },
     });
     setName('');
@@ -45,62 +45,62 @@ function Comment() {
   };
 
   return (
-    <form onSubmit={handleComment}>
-      <div className="Review-box">
-        {newComment &&
-          newComment.map((item) => {
-            return <NewComment key={item.id} name={item} comment={item} />;
-          })}
-        <Menu>
+    <div className="Review-box">
+      {newComment &&
+        newComment.map((item) => {
+          return <NewComment key={item.id} name={item} comment={item} />;
+        })}
+      <Menu>
+        <button
+          className="btn"
+          style={{ background: '#3F51B5' }}
+          onClick={() => setShowComment(true)}
+        >
+          Show Comment Box
+        </button>
+        {showComment && !comment && (
           <button
             className="btn"
-            style={{ background: '#3F51B5' }}
-            onClick={() => setShowComment(true)}
+            style={{ background: 'grey', pointer: 'cursor' }}
+            onClick={() => setShowComment(false)}
           >
-            Show Comment Box
+            Hide Comment Box
           </button>
-          {showComment && !comment && (
-            <button
-              className="btn"
-              style={{ background: 'grey', pointer: 'cursor' }}
-              onClick={() => setShowComment(false)}
-            >
-              Hide Comment Box
-            </button>
-          )}
-        </Menu>
-        {/* {showComment && !comment && ( */}
-        <div className="User">
-          <img
-            style={{ marginTop: '16px' }}
-            src="https://pbs.twimg.com/profile_images/1333422513318100994/lrNmElhn_400x400.jpg"
-          />
-          <h3>
+        )}
+      </Menu>
+      {showComment && (
+        <form onSubmit={handleComment}>
+          <div className="User">
+            <img
+              style={{ marginTop: '16px' }}
+              src="https://pbs.twimg.com/profile_images/1333422513318100994/lrNmElhn_400x400.jpg"
+            />
+            <h3>
+              <input
+                className="comment"
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                style={{ width: '200px', height: '20px' }}
+              />
+            </h3>
             <input
               className="comment"
               type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              style={{ width: '200px', height: '20px' }}
+              value={comment}
+              onChange={(e) => setComment(e.target.value)}
             />
-          </h3>
-          <input
-            className="comment"
-            type="text"
-            value={comment}
-            onChange={(e) => setComment(e.target.value)}
-          />
-          <button
-            onClick={handleComment}
-            style={{ background: 'teal', marginLeft: '6px' }}
-            className="btn"
-          >
-            Submit
-          </button>
-        </div>
-        {/* )} */}
-      </div>
-    </form>
+            <button
+              onClick={handleComment}
+              style={{ background: 'teal', marginLeft: '6px' }}
+              className="btn"
+            >
+              Submit
+            </button>
+          </div>
+        </form>
+      )}
+    </div>
   );
 }
 
